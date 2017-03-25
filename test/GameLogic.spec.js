@@ -2005,7 +2005,7 @@ describe('GameLogic', function () {
                     {
                         ball1: 10,
                         ball2: '?',
-                        score: 25
+                        score: 15
                     },
                     {
                         ball1: 2,

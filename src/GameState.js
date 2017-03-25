@@ -1,52 +1,17 @@
+import {range} from 'lodash';
+
 const GameState = {
     getInitialState(){
         return {
             frames: [
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
-                {
-                    ball1: '?',
-                    ball2: '?',
-                    score: '?'
-                },
+                ...range(9).map(item => (
+                        {
+                            ball1: '?',
+                            ball2: '?',
+                            score: '?'
+                        }
+                    )
+                ),
                 {
                     ball1: '?',
                     ball2: '?',

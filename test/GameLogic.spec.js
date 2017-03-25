@@ -2011,7 +2011,7 @@ describe('GameLogic', function () {
                         ball1: 2,
                         ball2: 3,
                         bonusBall: '?',
-                        score: '?'
+                        score: 5
                     }
                 ]
             };

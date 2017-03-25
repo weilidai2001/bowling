@@ -99,9 +99,16 @@ export default {
 
         let newState = Object.assign({}, state);
 
-        for (let frame = 0; frame < 9; frame++){
+        for (let frame = 0; frame < 10; frame++){
             if (isFirstBallUnpopulatedOnFrame(newState, frame)) {
 
+            } else if (isFinalFrame(frame)) {
+                if (!isSecondBallUnpopulatedOnFrame(newState, frame) && !isFirstBallStrikeOnFrame(newState, frame)) {
+                    const frameScore = ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame)) +
+                        ignoreUnknown(GameState.getScoreForBall2OnFrame(newState, frame)) +
+                        ignoreUnknown(GameState.getScoreForBonusBallOnLastFrame(newState));
+                    newState = GameState.addFrameScore(newState, frame, frameScore);
+                }
             } else if (isSpare(newState, frame) && !isFirstBallUnpopulatedOnFrame(newState, frame + 1)) {
                 const frameScore = 10 + ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame + 1));
                 newState = GameState.addFrameScore(newState, frame, frameScore);

@@ -370,4 +370,18 @@ describe('GameLogic', function () {
             GameLogic.isGameEnded(gameComplete).should.be.true();
         });
     });
+
+    describe('determinePointerToNextFrameAndBall', function () {
+        it('should return frame 0 and isBall1 true when game is in initial state', function () {
+            const initialState = GameState.getInitialState();
+            const expected = {
+                frame: 0,
+                isBall1: true,
+                isBall2: false,
+                isBonus: false
+            };
+
+            GameLogic.determinePointerToNextFrameAndBall(initialState).should.be.deepEqual(expected);
+        });
+    });
 });

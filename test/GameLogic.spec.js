@@ -450,5 +450,13 @@ describe('GameLogic', function () {
 
             GameLogic.determinePointerToNextFrameAndBall(stateWhenFirstBowlIsNotStrike).should.be.deepEqual(expected);
         });
+
+        it('should return frame 2 and isBall1 true when frame 1 ball 1 was a strike');
+
+        it('should return frame 9 and isBonusBall true when frame 9 ball 2 was a spare');
+
+        it('should return frame 9 and isBall2 true when frame 9 ball 1 was a strike and ball 2 has not yet been played');
+
+        it('should return frame 9 and isBonusBall true when frame 9 ball 1 was a strike and ball 2 has played');
     });
 });

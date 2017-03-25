@@ -23,8 +23,12 @@ export default {
             isLastFrameInitiallySpareThenBonusPlayed(state) ||
             isLastFrameInitiallyStrikeThenBonus2Played(state);
     },
-    calculateNewState() {
+    calculateNewState(state, score) {
+        const pointerToNext = this.determinePointerToNextFrameAndBall(state);
 
+        if (pointerToNext.isBall1) {
+            return GameState.addScoreForBall1(state, pointerToNext.frame, score)
+        }
     },
     determinePointerToNextFrameAndBall(state) {
         const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';

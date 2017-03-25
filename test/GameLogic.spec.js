@@ -2249,7 +2249,120 @@ describe('GameLogic', function () {
             GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
         });
 
-        it('should calculate frame scores when final frame is spare');
+        it('should calculate frame scores when final frame is spare', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        bonusBall: 3,
+                        score: '?'
+                    }
+                ]
+            };
+            const expectedState = {
+                frames: [
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: 5
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 20
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        bonusBall: 3,
+                        score: 13
+                    }
+                ]
+            };
+
+            GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
+        });
 
         it('should calculate frame scores when final frame is strike');
 

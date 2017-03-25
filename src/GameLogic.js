@@ -16,8 +16,12 @@ export default {
         const isLastFrameInitiallySpareThenBonusPlayed = state =>
              isLastFrameSpare(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
 
+        const isLastFrameInitiallyStrikeThenBonus2Played = state =>
+            isLastFrameStrike(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
+
         return isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed(state) ||
-            isLastFrameInitiallySpareThenBonusPlayed(state);
+            isLastFrameInitiallySpareThenBonusPlayed(state) ||
+            isLastFrameInitiallyStrikeThenBonus2Played(state);
     }
 };
 

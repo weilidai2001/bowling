@@ -36,5 +36,10 @@ export default {
         let newState = Object.assign({}, currentState);
         newState.frames[9].bonusBall1 = score;
         return newState;
+    },
+    addScoreForBonusBall2(currentState, score) {
+        let newState = Object.assign({}, currentState);
+        newState.frames[9].bonusBall2 = score;
+        return newState;
     }
 };

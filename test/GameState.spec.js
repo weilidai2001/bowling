@@ -71,7 +71,7 @@ describe('GameState', function () {
             const expected = {
                 frames: [
                     {
-                        ball1: '5',
+                        ball1: 5,
                         ball2: '?',
                         score: '?'
                     },

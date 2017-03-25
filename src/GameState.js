@@ -21,5 +21,10 @@ export default {
                 }
             ]
         };
+    },
+    addScoreForBall1(currentState, frame, score) {
+        let newState = Object.assign({}, currentState);
+        newState.frames[frame].ball1 = score;
+        return newState;
     }
 };

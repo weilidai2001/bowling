@@ -850,7 +850,121 @@ describe('GameLogic', function () {
             GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
         });
 
-        it('should add bowl result to frame 0 and ball2 when first ball is not a strike');
+        it('should add bowl result to frame 0 and ball2 when first ball is not a strike', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 1,
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+            const currentBowl = 5;
+            const expectedState = {
+                frames: [
+                    {
+                        ball1: 1,
+                        ball2: 5,
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
+        });
 
         it('should add bowl result to frame 1 and ball1 when frame 0 ball 1 was a strike');
 

@@ -22,6 +22,14 @@ export default {
         return isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed(state) ||
             isLastFrameInitiallySpareThenBonusPlayed(state) ||
             isLastFrameInitiallyStrikeThenBonus2Played(state);
+    },
+    determinePointerToNextFrameAndBall(state) {
+        return {
+            frame: 0,
+            isBall1: true,
+            isBall2: false,
+            isBonus: false
+        };
     }
 };
 

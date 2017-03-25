@@ -309,5 +309,65 @@ describe('GameLogic', function () {
 
             GameLogic.isGameEnded(gameComplete).should.be.false();
         });
+
+        it('should return true when final frame has two balls played and there was a strike and the bonus ball is played also', function () {
+            const gameComplete = {
+                frames: [
+                    {
+                        ball1: 0,
+                        ball2: 5,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 1,
+                        bonusBall: 10,
+                        score: '?'
+                    }
+                ]
+            };
+
+            GameLogic.isGameEnded(gameComplete).should.be.true();
+        });
     });
 });

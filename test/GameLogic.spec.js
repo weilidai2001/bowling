@@ -719,6 +719,71 @@ describe('GameLogic', function () {
             GameLogic.determinePointerToNextFrameAndBall(stateBeforeBowl).should.be.deepEqual(expected);
         });
 
-        it('should return frame 9 and isBonusBall true when frame 9 ball 1 was a strike and ball 2 has played');
+        it('should return frame 9 and isBonusBall true when frame 9 ball 1 was a strike and ball 2 has played', function () {
+            const stateBeforeBowl = {
+                frames: [
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 2,
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            const expected = {
+                frame: 9,
+                isBall1: false,
+                isBall2: false,
+                isBonus: true
+            };
+
+            GameLogic.determinePointerToNextFrameAndBall(stateBeforeBowl).should.be.deepEqual(expected);
+        });
     });
 });

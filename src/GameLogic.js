@@ -89,7 +89,23 @@ export default {
         }
     },
     recalculateFrameScores(state){
-        return state;
+        const ignoreUnknown = value => value === '?' ? 0 : value;
+
+        let newState = Object.assign({}, state);
+
+
+        for (let frame = 0; frame < 9; frame++){
+            const frameScore = ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame)) +
+                ignoreUnknown(GameState.getScoreForBall2OnFrame(newState, frame));
+
+            if (frameScore === 0) {
+
+            } else {
+                newState = GameState.addFrameScore(newState, frame, frameScore);
+            }
+        }
+
+        return newState;
     }
 };
 

@@ -1,1 +1,4 @@
-console.log('hello world')
+import { range } from 'lodash';
+
+
+console.log(range(10));

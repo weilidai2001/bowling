@@ -138,6 +138,15 @@ export default {
         }
 
         return newState;
+    },
+    calculateTotalScore(state) {
+        const ignoreUnknown = value => value === '?' ? 0 : value;
+        let totalScore = 0;
+        for (let frame = 0; frame < 10; frame++){
+            totalScore += ignoreUnknown(GameState.getFrameScore(state, frame));
+        }
+
+        return totalScore;
     }
 };
 

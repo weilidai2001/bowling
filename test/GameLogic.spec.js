@@ -2941,4 +2941,259 @@ describe('GameLogic', function () {
         });
 
     });
+
+    describe('calculateTotalScore', function () {
+        it('should calculate total score when game is in initial state', function () {
+            const initialState = GameState.getInitialState();
+            const expectedTotal = 0;
+
+            GameLogic.calculateTotalScore(initialState).should.be.deepEqual(expectedTotal);
+        });
+
+        it('should calculate the total score of 300 when X|X|X|X|X|X|X|X|X|X||XX', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 10,
+                        bonusBall: 10,
+                        score: 30
+                    }
+                ]
+            };
+            const expectedTotal = 300;
+
+            GameLogic.calculateTotalScore(initialState).should.be.deepEqual(expectedTotal);
+        });
+
+        it('should calculate the total score of 90 when 9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        bonusBall: '?',
+                        score: 9
+                    }
+                ]
+            };
+            const expectedTotal = 90;
+
+            GameLogic.calculateTotalScore(initialState).should.be.deepEqual(expectedTotal);
+        });
+
+        it('should calculate the total score of 150 when 5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        score: 15
+                    },
+                    {
+                        ball1: 5,
+                        ball2: 5,
+                        bonusBall: 5,
+                        score: 15
+                    }
+                ]
+            };
+            const expectedTotal = 150;
+
+            GameLogic.calculateTotalScore(initialState).should.be.deepEqual(expectedTotal);
+        });
+
+
+        it('should calculate the total score of 167 when X|7/|9-|X|-8|8/|-6|X|X|X||81', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 20
+                    },
+                    {
+                        ball1: 7,
+                        ball2: 3,
+                        score: 19
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 18
+                    },
+                    {
+                        ball1: 0,
+                        ball2: 8,
+                        score: 8
+                    },
+                    {
+                        ball1: 8,
+                        ball2: 2,
+                        score: 10
+                    },
+                    {
+                        ball1: 0,
+                        ball2: 6,
+                        score: 6
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 28
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 8,
+                        bonusBall: 1,
+                        score: 19
+                    }
+                ]
+            };
+            const expectedTotal = 167;
+
+            GameLogic.calculateTotalScore(initialState).should.be.deepEqual(expectedTotal);
+        });
+
+    });
 });

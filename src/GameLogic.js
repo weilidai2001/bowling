@@ -89,7 +89,7 @@ export default {
         }
     },
     recalculateFrameScores(state){
-
+        return state;
     }
 };
 

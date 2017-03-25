@@ -374,4 +374,67 @@ describe('GameState', function () {
             (GameState.addScoreForBonusBall(initialState, 5)).should.be.deepEqual(expected)
         });
     });
+
+    describe('addFrameScore()', function () {
+        it('should return a new state which has a frame score populated', function () {
+            const initialState = GameState.getInitialState();
+            const expected = {
+                frames: [
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: 10
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            (GameState.addFrameScore(initialState, 0, 10)).should.be.deepEqual(expected)
+        });
+    });
 });

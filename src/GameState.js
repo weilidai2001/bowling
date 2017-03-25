@@ -36,6 +36,11 @@ export default {
         newState.frames[9].bonusBall = score;
         return newState;
     },
+    addFrameScore(currentState, frame, score) {
+        let newState = Object.assign({}, currentState);
+        newState.frames[frame].score = score;
+        return newState;
+    },
     getScoreForBall1OnFrame(state, frame) {
         return state.frames[frame].ball1;
     },

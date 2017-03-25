@@ -1335,7 +1335,7 @@ describe('GameLogic', function () {
                     {
                         ball1: 5,
                         ball2: 2,
-                        score: 7
+                        score: '?'
                     },
                     {
                         ball1: '?',
@@ -1441,7 +1441,7 @@ describe('GameLogic', function () {
                 ]
             };
 
-            GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
+            GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
         });
 
         it.skip('should calculate frame scores when previous frame is spare', function () {

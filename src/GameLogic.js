@@ -90,11 +90,10 @@ export default {
     },
     recalculateFrameScores(state){
         const ignoreUnknown = value => value === '?' ? 0 : value;
-        const isPreviousFrameASpare = (state, frame) => frame !== 0 &&
-            (GameState.getScoreForBall1OnFrame(state, frame - 1) + GameState.getScoreForBall1OnFrame(state, frame - 1)) === 10;
-        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';
+        const isSpare = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) + GameState.getScoreForBall2OnFrame(state, frame) === 10;
         const isFirstBallStrikeOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === 10;
         const isNextFrameAStrike = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame + 1) === 10;
+        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';
         const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, frame) === '?';
 
         let newState = Object.assign({}, state);
@@ -102,9 +101,9 @@ export default {
         for (let frame = 0; frame < 9; frame++){
             if (isFirstBallUnpopulatedOnFrame(newState, frame)) {
 
-            } else if (isPreviousFrameASpare(newState, frame)) {
-                const frameScore = 10 + ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame));
-                newState = GameState.addFrameScore(newState, frame - 1, frameScore);
+            } else if (isSpare(newState, frame) && !isFirstBallUnpopulatedOnFrame(newState, frame + 1)) {
+                const frameScore = 10 + ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame + 1));
+                newState = GameState.addFrameScore(newState, frame, frameScore);
             } else if (isFirstBallStrikeOnFrame(newState, frame)) {
                 if (isNextFrameAStrike(newState, frame)) {
                     const frameScore = 10 + 10 + ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame + 2));

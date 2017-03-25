@@ -39,13 +39,6 @@ export default {
                     isBall2: false,
                     isBonus: false
                 };
-            } else if (isSecondBallUnpopulatedOnFrame(state, frame) && !isFirstBallStrikeOnFrame(state, frame)) {
-                return {
-                    frame: frame,
-                    isBall1: false,
-                    isBall2: true,
-                    isBonus: false
-                };
             } else if (isFinalFrame(frame) && isSpare(state, frame)) {
                 return {
                     frame: frame,
@@ -53,7 +46,21 @@ export default {
                     isBall2: false,
                     isBonus: true
                 };
-            } else if (isFinalFrame(frame) && isFirstBallStrikeOnFrame(state, frame)) {
+            } else if (isFinalFrame(frame) && isFirstBallStrikeOnFrame(state, frame) && isSecondBallUnpopulatedOnFrame(state, frame)) {
+                return {
+                    frame: frame,
+                    isBall1: false,
+                    isBall2: true,
+                    isBonus: false
+                };
+            } else if (isFinalFrame(frame) && isFirstBallStrikeOnFrame(state, frame) && !isSecondBallUnpopulatedOnFrame(state, frame)) {
+                return {
+                    frame: frame,
+                    isBall1: false,
+                    isBall2: false,
+                    isBonus: true
+                };
+            } else if (isSecondBallUnpopulatedOnFrame(state, frame) && !isFirstBallStrikeOnFrame(state, frame)) {
                 return {
                     frame: frame,
                     isBall1: false,

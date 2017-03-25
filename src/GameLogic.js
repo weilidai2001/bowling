@@ -108,7 +108,10 @@ export default {
             } else if (isFirstBallStrikeOnFrame(newState, frame)) {
                 if (isNextFrameAStrike(newState, frame)) {
                     if (isFinalFrame(frame + 1)) {
-
+                        if (!isSecondBallUnpopulatedOnFrame(newState, frame + 1)) {
+                            const frameScore = 10 + 10 + ignoreUnknown(GameState.getScoreForBall2OnFrame(newState, frame + 1));
+                            newState = GameState.addFrameScore(newState, frame, frameScore);
+                        }
                     } else {
                         const frameScore = 10 + 10 + ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame + 2));
                         newState = GameState.addFrameScore(newState, frame, frameScore);

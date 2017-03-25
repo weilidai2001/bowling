@@ -78,7 +78,7 @@ export default {
                     isBall2: true,
                     isBonus: false
                 };
-            } else if (isPreviousFrameAStrike(state, frame)) {
+            } else if (isPreviousFrameAStrike(state, frame) && isFirstBallUnpopulatedOnFrame(state, frame)) {
                 return {
                     frame: frame,
                     isBall1: true,

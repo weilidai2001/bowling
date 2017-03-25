@@ -24,12 +24,26 @@ export default {
             isLastFrameInitiallyStrikeThenBonus2Played(state);
     },
     determinePointerToNextFrameAndBall(state) {
-        return {
-            frame: 0,
-            isBall1: true,
-            isBall2: false,
-            isBonus: false
-        };
+        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, 0) === '?';
+        const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, 0) === '?';
+
+        for (let frame = 0; frame < 10; frame++){
+            if (isFirstBallUnpopulatedOnFrame(state, frame)) {
+                return {
+                    frame: frame,
+                    isBall1: true,
+                    isBall2: false,
+                    isBonus: false
+                };
+            } else if (isSecondBallUnpopulatedOnFrame(state, frame)) {
+                return {
+                    frame: frame,
+                    isBall1: false,
+                    isBall2: true,
+                    isBonus: false
+                };
+            }
+        }
     }
 };
 

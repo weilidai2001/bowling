@@ -1082,7 +1082,121 @@ describe('GameLogic', function () {
             GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
         });
 
-        it('should add bowl result to frame 9 and bonusBall when frame 9 ball 2 was a spare');
+        it('should add bowl result to frame 9 and bonusBall when frame 9 ball 2 was a spare', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 8,
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+            const currentBowl = 5;
+            const expectedState = {
+                frames: [
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 1,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 2,
+                        ball2: 8,
+                        bonusBall: 5,
+                        score: '?'
+                    }
+                ]
+            };
+
+            GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
+        });
 
     });
 });

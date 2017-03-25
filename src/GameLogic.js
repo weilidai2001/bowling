@@ -9,7 +9,7 @@ export default {
             GameState.getScoreForBall1OnFrame(state, 9) === 10;
 
         const isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed = state =>
-            (GameState.getScoreForBall1OnFrame(state, 9) !== '?' || GameState.getScoreForBall2OnFrame(state, 9) !== '?') &&
+            (GameState.getScoreForBall1OnFrame(state, 9) !== '?' && GameState.getScoreForBall2OnFrame(state, 9) !== '?') &&
             !isLastFrameStrike(state) &&
             !isLastFrameSpare(state);
 

@@ -26,7 +26,7 @@ function continuePlayingUntilGameEnd(gameState) {
 function bowl(state) {
     const score = inputDevice.promptEnterScore();
     const newState = GameLogic.calculateNewState(state, score);
-    outputDevice.print(OutputUtil.stringifyGameState(newState));
+    outputDevice.print(OutputUtil.stringifyBowlScores(newState));
     return newState;
 }
 

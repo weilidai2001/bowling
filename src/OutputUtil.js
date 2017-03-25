@@ -1,7 +1,7 @@
 import GameState from './GameState';
 
 export default {
-    stringifyGameState: (state) => {
+    stringifyBowlScores: (state) => {
         let outputString = '';
 
         for (let frame = 0; frame < 9; frame++){

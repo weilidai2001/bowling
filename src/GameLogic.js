@@ -53,6 +53,13 @@ export default {
                     isBall2: false,
                     isBonus: true
                 };
+            } else if (isFinalFrame(frame) && isFirstBallStrikeOnFrame(state, frame)) {
+                return {
+                    frame: frame,
+                    isBall1: false,
+                    isBall2: true,
+                    isBonus: false
+                };
             } else if (isPreviousFrameAStrike(state, frame)) {
                 return {
                     frame: frame,

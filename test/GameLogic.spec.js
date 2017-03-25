@@ -451,7 +451,72 @@ describe('GameLogic', function () {
             GameLogic.determinePointerToNextFrameAndBall(stateWhenFirstBowlIsNotStrike).should.be.deepEqual(expected);
         });
 
-        it('should return frame 2 and isBall1 true when frame 1 ball 1 was a strike');
+        it('should return frame 2 and isBall1 true when frame 1 ball 1 was a strike', function () {
+            const stateWhenFirstBowlIsNotStrike = {
+                frames: [
+                    {
+                        ball1: 2,
+                        ball2: 3,
+                        score: '?'
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            const expected = {
+                frame: 2,
+                isBall1: false,
+                isBall2: true,
+                isBonus: false
+            };
+
+            GameLogic.determinePointerToNextFrameAndBall(stateWhenFirstBowlIsNotStrike).should.be.deepEqual(expected);
+        });
 
         it('should return frame 9 and isBonusBall true when frame 9 ball 2 was a spare');
 

@@ -189,5 +189,65 @@ describe('GameLogic', function () {
 
             GameLogic.isGameEnded(gameComplete).should.be.false();
         });
+
+        it('should return true ', function () {
+            const gameComplete = {
+                frames: [
+                    {
+                        ball1: 0,
+                        ball2: 5,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 2,
+                        score: '?'
+                    },
+                    {
+                        ball1: 3,
+                        ball2: 7,
+                        bonusBall: 2,
+                        score: '?'
+                    }
+                ]
+            };
+
+            GameLogic.isGameEnded(gameComplete).should.be.true();
+        });
     });
 });

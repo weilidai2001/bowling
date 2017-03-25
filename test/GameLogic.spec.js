@@ -786,4 +786,75 @@ describe('GameLogic', function () {
             GameLogic.determinePointerToNextFrameAndBall(stateBeforeBowl).should.be.deepEqual(expected);
         });
     });
+
+    describe('calculateNewState', function () {
+        it('should add bowl result to frame 0 and ball1 when game is in initial state', function () {
+            const initialState = GameState.getInitialState();
+            const currentBowl = 5;
+            const expectedState = {
+                frames: [
+                    {
+                        ball1: 5,
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
+        });
+
+        it('should add bowl result to frame 0 and ball2 when first ball is not a strike');
+
+        it('should add bowl result to frame 1 and ball1 when frame 0 ball 1 was a strike');
+
+        it('should add bowl result to frame 9 and bonusBall when frame 9 ball 2 was a spare');
+
+    });
 });

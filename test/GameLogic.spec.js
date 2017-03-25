@@ -1329,9 +1329,122 @@ describe('GameLogic', function () {
             GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
         });
 
-        it('should calculate frame scores when there was no spare nor strike in the previous frame');
+        it('should calculate frame scores when there was no spare nor strike in the previous frame', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 5,
+                        ball2: 2,
+                        score: 7
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+            const expectedState = {
+                frames: [
+                    {
+                        ball1: 5,
+                        ball2: 2,
+                        score: 7
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
 
-        it('should calculate frame scores when previous frame is spare', function () {
+            GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
+        });
+
+        it.skip('should calculate frame scores when previous frame is spare', function () {
             const initialState = {
                 frames: [
                     {

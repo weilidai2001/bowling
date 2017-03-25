@@ -43,15 +43,15 @@ export default {
         return newState;
     },
     getScoreForBall1OnFrame(state, frame) {
-        return state[frame].ball1;
+        return state.frames[frame].ball1;
     },
     getScoreForBall2OnFrame(state, frame) {
-        return state[frame].ball2;
+        return state.frames[frame].ball2;
     },
     getScoreForBonusBall1OnLastFrame(state) {
-        return state[9].bonusBall1;
+        return state.frames[9].bonusBall1;
     },
     getScoreForBonusBall2OnLastFrame(state) {
-        return state[9].bonusBall2;
+        return state.frames[9].bonusBall2;
     }
 };

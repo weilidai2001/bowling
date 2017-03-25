@@ -30,6 +30,8 @@ export default {
             return GameState.addScoreForBall1(state, pointerToNext.frame, score)
         } else if (pointerToNext.isBall2) {
             return GameState.addScoreForBall2(state, pointerToNext.frame, score)
+        } else if (pointerToNext.isBonus) {
+            return GameState.addScoreForBonusBall(state, score)
         }
     },
     determinePointerToNextFrameAndBall(state) {

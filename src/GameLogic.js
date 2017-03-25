@@ -2,9 +2,22 @@ import GameState from './GameState';
 
 export default {
     isGameEnded(state) {
-        const isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed = state => (GameState.getScoreForBall1OnFrame(state, 9) !== '?' && GameState.getScoreForBall2OnFrame(state, 9) !== '?')
+        const isLastFrameSpare = state =>
+            GameState.getScoreForBall1OnFrame(state, 9) + GameState.getScoreForBall2OnFrame(state, 9) === 10;
 
-        return isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed(state);
+        const isLastFrameStrike = state =>
+            GameState.getScoreForBall1OnFrame(state, 9) === 10;
+
+        const isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed = state =>
+            (GameState.getScoreForBall1OnFrame(state, 9) !== '?' || GameState.getScoreForBall2OnFrame(state, 9) !== '?') &&
+            !isLastFrameStrike(state) &&
+            !isLastFrameSpare(state);
+
+        const isLastFrameInitiallySpareThenBonusPlayed = state =>
+             isLastFrameSpare(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
+
+        return isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed(state) ||
+            isLastFrameInitiallySpareThenBonusPlayed(state);
     }
 };
 

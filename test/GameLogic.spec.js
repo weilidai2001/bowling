@@ -130,7 +130,7 @@ describe('GameLogic', function () {
             GameLogic.isGameEnded(gameComplete).should.be.true();
         });
 
-        it.skip('should return false when final frame has two balls played and there was a spare', function () {
+        it('should return false when final frame has two balls played and there was a spare', function () {
             const gameComplete = {
                 frames: [
                     {

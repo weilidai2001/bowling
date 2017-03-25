@@ -24,10 +24,12 @@ export default {
             isLastFrameInitiallyStrikeThenBonus2Played(state);
     },
     determinePointerToNextFrameAndBall(state) {
-        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, 0) === '?';
-        const isFirstBallStrikeOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, 0) === 10;
-        const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, 0) === '?';
+        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';
+        const isFirstBallStrikeOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === 10;
+        const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, frame) === '?';
         const isPreviousFrameAStrike = (state, frame) => frame !== 0 && GameState.getScoreForBall1OnFrame(state, frame - 1) === 10;
+        const isFinalFrame = frame => frame === 9;
+        const isSpare = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) + GameState.getScoreForBall2OnFrame(state, frame) === 10;
 
         for (let frame = 0; frame < 10; frame++){
             if (isFirstBallUnpopulatedOnFrame(state, frame)) {
@@ -43,6 +45,13 @@ export default {
                     isBall1: false,
                     isBall2: true,
                     isBonus: false
+                };
+            } else if (isFinalFrame(frame) && isSpare(state, frame)) {
+                return {
+                    frame: frame,
+                    isBall1: false,
+                    isBall2: false,
+                    isBonus: true
                 };
             } else if (isPreviousFrameAStrike(state, frame)) {
                 return {

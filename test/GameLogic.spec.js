@@ -1266,4 +1266,28 @@ describe('GameLogic', function () {
         });
 
     });
+
+    describe('recalculateFrameScores', function () {
+        it('should calculate frame scores when game is in initial state');
+
+        it('should calculate frame scores when previous frame is spare');
+
+        it('should calculate frame scores when previous frame is strike');
+
+        it('should calculate frame scores when penultimate frame is spare');
+
+        it('should calculate frame scores when penultimate frame is strike');
+
+        it('should calculate frame scores when final frame is spare');
+
+        it('should calculate frame scores when final frame is strike');
+
+        it('should calculate frame scores when X|X|X|X|X|X|X|X|X|X||XX');
+
+        it('should calculate frame scores when 9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||');
+
+        it('should calculate frame scores when 5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5');
+
+        it('should calculate frame scores when X|7/|9-|X|-8|8/|-6|X|X|X||81');
+    });
 });

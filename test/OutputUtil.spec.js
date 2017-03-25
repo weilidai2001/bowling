@@ -11,4 +11,13 @@ describe('OutputUtil', function () {
             (OutputUtil.stringifyBowlScores(initialState)).should.be.deepEqual(expected);
         });
     });
+
+    describe('stringifyFrameScores()', function () {
+        it('should return initial game state', function () {
+            const initialState = GameState.getInitialState();
+            const expected = '   ? |    ? |    ? |    ? |    ? |    ? |    ? |    ? |    ? |    ?';
+
+            (OutputUtil.stringifyFrameScores(initialState)).should.be.deepEqual(expected);
+        });
+    });
 });

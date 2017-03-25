@@ -27,6 +27,7 @@ function bowl(state) {
     const score = inputDevice.promptEnterScore();
     const newState = GameLogic.calculateNewState(state, score);
     outputDevice.print(OutputUtil.stringifyBowlScores(newState));
+    outputDevice.print(OutputUtil.stringifyFrameScores(newState));
     return newState;
 }
 

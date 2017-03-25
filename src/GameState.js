@@ -44,5 +44,8 @@ export default {
     },
     getScoreForBonusBallOnLastFrame(state) {
         return state.frames[9].bonusBall;
+    },
+    getFrameScore(state, frame) {
+        return state.frames[frame].score;
     }
 };

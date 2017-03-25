@@ -369,6 +369,66 @@ describe('GameLogic', function () {
 
             GameLogic.isGameEnded(gameComplete).should.be.true();
         });
+
+        it('should return false when 9-|9-|9-|9-|9-|9-|9-|9-|9-|9', function () {
+            const stateBeforeBowl = {
+                frames: [
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: '?'
+                    },
+                    {
+                        ball1: 9,
+                        ball2: '?',
+                        bonusBall: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            GameLogic.isGameEnded(stateBeforeBowl).should.be.false();
+        });
     });
 
     describe('determinePointerToNextFrameAndBall', function () {

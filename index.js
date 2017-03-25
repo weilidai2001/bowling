@@ -26,9 +26,13 @@ function continuePlayingUntilGameEnd(gameState) {
 function bowl(state) {
     const score = inputDevice.promptEnterScore();
     const newState = GameLogic.calculateNewState(state, score);
-    outputDevice.print(OutputUtil.stringifyBowlScores(newState));
-    outputDevice.print(OutputUtil.stringifyFrameScores(newState));
-    return newState;
+    const newStateWithFrameScore = GameLogic.recalculateFrameScores(newState);
+    outputDevice.print(OutputUtil.stringifyBowlScores(newStateWithFrameScore));
+    outputDevice.print(OutputUtil.stringifyFrameScores(newStateWithFrameScore));
+    outputDevice.print(`Current total score: ${GameLogic.calculateTotalScore(newStateWithFrameScore)}`);
+    outputDevice.print();
+    outputDevice.print();
+    return newStateWithFrameScore;
 }
 
 start();

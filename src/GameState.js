@@ -1,6 +1,6 @@
 import {range} from 'lodash';
 
-const GameState = {
+export default {
     getInitialState(){
         return {
             frames: [
@@ -23,5 +23,3 @@ const GameState = {
         };
     }
 };
-
-module.exports = GameState;

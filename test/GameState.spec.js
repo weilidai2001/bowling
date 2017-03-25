@@ -54,8 +54,7 @@ describe('GameState', function () {
                     {
                         ball1: '?',
                         ball2: '?',
-                        bonusBall1: '?',
-                        bonusBall2: '?',
+                        bonusBall: '?',
                         score: '?'
                     }
                 ]
@@ -118,8 +117,7 @@ describe('GameState', function () {
                     {
                         ball1: '?',
                         ball2: '?',
-                        bonusBall1: '?',
-                        bonusBall2: '?',
+                        bonusBall: '?',
                         score: '?'
                     }
                 ]
@@ -180,8 +178,7 @@ describe('GameState', function () {
                     {
                         ball1: '?',
                         ball2: '?',
-                        bonusBall1: '?',
-                        bonusBall2: '?',
+                        bonusBall: '?',
                         score: '?'
                     }
                 ]
@@ -244,8 +241,7 @@ describe('GameState', function () {
                     {
                         ball1: '?',
                         ball2: '?',
-                        bonusBall1: '?',
-                        bonusBall2: '?',
+                        bonusBall: '?',
                         score: '?'
                     }
                 ]
@@ -306,8 +302,7 @@ describe('GameState', function () {
                     {
                         ball1: '?',
                         ball2: '?',
-                        bonusBall1: '?',
-                        bonusBall2: '?',
+                        bonusBall: '?',
                         score: '?'
                     }
                 ]
@@ -317,7 +312,7 @@ describe('GameState', function () {
         });
     });
 
-    describe('addScoreForBonusBall1()', function () {
+    describe('addScoreForBonusBall()', function () {
         it('should return a new state which has a score of 5 last frame and bonus ball 1', function () {
             const initialState = GameState.getInitialState();
             const expected = {
@@ -370,78 +365,13 @@ describe('GameState', function () {
                     {
                         ball1: '?',
                         ball2: '?',
-                        bonusBall1: 5,
-                        bonusBall2: '?',
+                        bonusBall: 5,
                         score: '?'
                     }
                 ]
             };
 
-            (GameState.addScoreForBonusBall1(initialState, 5)).should.be.deepEqual(expected)
-        });
-    });
-
-    describe('addScoreForBonusBall2()', function () {
-        it('should return a new state which has a score of 5 last frame and bonus ball 2', function () {
-            const initialState = GameState.getInitialState();
-            const expected = {
-                frames: [
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        score: '?'
-                    },
-                    {
-                        ball1: '?',
-                        ball2: '?',
-                        bonusBall1: '?',
-                        bonusBall2: 5,
-                        score: '?'
-                    }
-                ]
-            };
-
-            (GameState.addScoreForBonusBall2(initialState, 5)).should.be.deepEqual(expected)
+            (GameState.addScoreForBonusBall(initialState, 5)).should.be.deepEqual(expected)
         });
     });
 });

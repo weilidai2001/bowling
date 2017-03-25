@@ -1508,7 +1508,7 @@ describe('GameLogic', function () {
                         score: 11
                     },
                     {
-                        ball1: '?',
+                        ball1: 1,
                         ball2: '?',
                         score: '?'
                     },

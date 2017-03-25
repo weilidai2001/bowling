@@ -316,4 +316,68 @@ describe('GameState', function () {
             (GameState.addScoreForBall2(initialState, 2, 8)).should.be.deepEqual(expected)
         });
     });
+
+    describe('addScoreForBonusBall1()', function () {
+        it('should return a new state which has a score of 5 last frame and bonus ball 1', function () {
+            const initialState = GameState.getInitialState();
+            const expected = {
+                frames: [
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        score: '?'
+                    },
+                    {
+                        ball1: '?',
+                        ball2: '?',
+                        bonusBall1: 5,
+                        bonusBall2: '?',
+                        score: '?'
+                    }
+                ]
+            };
+
+            (GameState.addScoreForBonusBall1(initialState, 5)).should.be.deepEqual(expected)
+        });
+    });
 });

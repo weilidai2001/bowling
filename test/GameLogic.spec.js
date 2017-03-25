@@ -2825,6 +2825,120 @@ describe('GameLogic', function () {
         });
 
 
-        it('should calculate frame scores when X|7/|9-|X|-8|8/|-6|X|X|X||81');
+        it('should calculate frame scores when X|7/|9-|X|-8|8/|-6|X|X|X||81', function () {
+            const initialState = {
+                frames: [
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 20
+                    },
+                    {
+                        ball1: 7,
+                        ball2: 3,
+                        score: 19
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 18
+                    },
+                    {
+                        ball1: 0,
+                        ball2: 8,
+                        score: 8
+                    },
+                    {
+                        ball1: 8,
+                        ball2: 2,
+                        score: 10
+                    },
+                    {
+                        ball1: 0,
+                        ball2: 6,
+                        score: 6
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 28
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 8,
+                        bonusBall: 1,
+                        score: '?'
+                    }
+                ]
+            };
+            const expectedState = {
+                frames: [
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 20
+                    },
+                    {
+                        ball1: 7,
+                        ball2: 3,
+                        score: 19
+                    },
+                    {
+                        ball1: 9,
+                        ball2: 0,
+                        score: 9
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 18
+                    },
+                    {
+                        ball1: 0,
+                        ball2: 8,
+                        score: 8
+                    },
+                    {
+                        ball1: 8,
+                        ball2: 2,
+                        score: 10
+                    },
+                    {
+                        ball1: 0,
+                        ball2: 6,
+                        score: 6
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 30
+                    },
+                    {
+                        ball1: 10,
+                        ball2: '?',
+                        score: 28
+                    },
+                    {
+                        ball1: 10,
+                        ball2: 8,
+                        bonusBall: 1,
+                        score: 19
+                    }
+                ]
+            };
+
+            GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
+        });
+
     });
 });

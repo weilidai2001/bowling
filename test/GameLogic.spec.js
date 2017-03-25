@@ -1444,7 +1444,7 @@ describe('GameLogic', function () {
             GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
         });
 
-        it.skip('should calculate frame scores when previous frame is spare', function () {
+        it('should calculate frame scores when previous frame is spare', function () {
             const initialState = {
                 frames: [
                     {
@@ -1556,7 +1556,7 @@ describe('GameLogic', function () {
                 ]
             };
 
-            GameLogic.calculateNewState(initialState, currentBowl).should.be.deepEqual(expectedState);
+            GameLogic.recalculateFrameScores(initialState).should.be.deepEqual(expectedState);
         });
 
         it('should calculate frame scores when previous frame is strike');

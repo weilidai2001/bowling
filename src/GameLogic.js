@@ -1,27 +1,30 @@
 import GameState from './GameState';
+import { partialRight } from 'lodash';
+
+const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';
+const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, frame) === '?';
+const isBonusBallUnpopulatedOnFrame = (state) => GameState.getScoreForBonusBallOnLastFrame(state) === '?';
+
+const isFinalFrame = frame => frame === 9;
+const isSpare = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) + GameState.getScoreForBall2OnFrame(state, frame) === 10;
+const isStrike = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === 10;
 
 export default {
     isGameEnded(state) {
-        const isLastFrameSpare = state =>
-            GameState.getScoreForBall1OnFrame(state, 9) + GameState.getScoreForBall2OnFrame(state, 9) === 10;
-
-        const isLastFrameStrike = state =>
-            GameState.getScoreForBall1OnFrame(state, 9) === 10;
-
-        const isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed = state =>
+        const isFinalFrameSpare = partialRight(isSpare, 9);
+        const isFinalFrameStrike = partialRight(isStrike, 9);
+        const isFinalFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed = state =>
             (GameState.getScoreForBall1OnFrame(state, 9) !== '?' && GameState.getScoreForBall2OnFrame(state, 9) !== '?') &&
-            !isLastFrameStrike(state) &&
-            !isLastFrameSpare(state);
+            !isFinalFrameStrike(state) &&
+            !isFinalFrameSpare(state);
+        const isFinalFrameInitiallySpareThenBonusPlayed = state =>
+             isFinalFrameSpare(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
+        const isFinalFrameInitiallyStrikeThenBonus2Played = state =>
+            isFinalFrameStrike(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
 
-        const isLastFrameInitiallySpareThenBonusPlayed = state =>
-             isLastFrameSpare(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
-
-        const isLastFrameInitiallyStrikeThenBonus2Played = state =>
-            isLastFrameStrike(state) && GameState.getScoreForBonusBallOnLastFrame(state) !== '?';
-
-        return isLastFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed(state) ||
-            isLastFrameInitiallySpareThenBonusPlayed(state) ||
-            isLastFrameInitiallyStrikeThenBonus2Played(state);
+        return isFinalFrameInitiallyNoStrikeNorSpareThenTwoBallsPlayed(state) ||
+            isFinalFrameInitiallySpareThenBonusPlayed(state) ||
+            isFinalFrameInitiallyStrikeThenBonus2Played(state);
     },
     calculateNewState(state, score) {
         const pointerToNext = this.determinePointerToNextFrameAndBall(state);
@@ -35,12 +38,7 @@ export default {
         }
     },
     determinePointerToNextFrameAndBall(state) {
-        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';
-        const isFirstBallStrikeOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === 10;
-        const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, frame) === '?';
         const isPreviousFrameAStrike = (state, frame) => frame !== 0 && GameState.getScoreForBall1OnFrame(state, frame - 1) === 10;
-        const isFinalFrame = frame => frame === 9;
-        const isSpare = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) + GameState.getScoreForBall2OnFrame(state, frame) === 10;
 
         for (let frame = 0; frame < 10; frame++){
             if (isFirstBallUnpopulatedOnFrame(state, frame)) {
@@ -57,21 +55,21 @@ export default {
                     isBall2: false,
                     isBonus: true
                 };
-            } else if (isFinalFrame(frame) && isFirstBallStrikeOnFrame(state, frame) && isSecondBallUnpopulatedOnFrame(state, frame)) {
+            } else if (isFinalFrame(frame) && isStrike(state, frame) && isSecondBallUnpopulatedOnFrame(state, frame)) {
                 return {
                     frame: frame,
                     isBall1: false,
                     isBall2: true,
                     isBonus: false
                 };
-            } else if (isFinalFrame(frame) && isFirstBallStrikeOnFrame(state, frame) && !isSecondBallUnpopulatedOnFrame(state, frame)) {
+            } else if (isFinalFrame(frame) && isStrike(state, frame) && !isSecondBallUnpopulatedOnFrame(state, frame)) {
                 return {
                     frame: frame,
                     isBall1: false,
                     isBall2: false,
                     isBonus: true
                 };
-            } else if (isSecondBallUnpopulatedOnFrame(state, frame) && !isFirstBallStrikeOnFrame(state, frame)) {
+            } else if (isSecondBallUnpopulatedOnFrame(state, frame) && !isStrike(state, frame)) {
                 return {
                     frame: frame,
                     isBall1: false,
@@ -90,13 +88,6 @@ export default {
     },
     recalculateFrameScores(state){
         const ignoreUnknown = value => value === '?' ? 0 : value;
-        const isSpare = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) + GameState.getScoreForBall2OnFrame(state, frame) === 10;
-        const isFirstBallStrikeOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === 10;
-        const isNextFrameAStrike = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame + 1) === 10;
-        const isFirstBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall1OnFrame(state, frame) === '?';
-        const isSecondBallUnpopulatedOnFrame = (state, frame) => GameState.getScoreForBall2OnFrame(state, frame) === '?';
-        const isBonusBallUnpopulatedOnFrame = (state) => GameState.getScoreForBonusBallOnLastFrame(state) === '?';
-        const isFinalFrame = frame => frame === 9;
 
         let newState = Object.assign({}, state);
 
@@ -104,7 +95,7 @@ export default {
             if (isFirstBallUnpopulatedOnFrame(newState, frame)) {
 
             } else if (isFinalFrame(frame)) {
-                if (isFirstBallStrikeOnFrame(newState, frame) && isBonusBallUnpopulatedOnFrame(newState)) {
+                if (isStrike(newState, frame) && isBonusBallUnpopulatedOnFrame(newState)) {
 
                 } else if (!isSecondBallUnpopulatedOnFrame(newState, frame)) {
                     const frameScore = ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame)) +
@@ -115,8 +106,8 @@ export default {
             } else if (isSpare(newState, frame) && !isFirstBallUnpopulatedOnFrame(newState, frame + 1)) {
                 const frameScore = 10 + ignoreUnknown(GameState.getScoreForBall1OnFrame(newState, frame + 1));
                 newState = GameState.addFrameScore(newState, frame, frameScore);
-            } else if (isFirstBallStrikeOnFrame(newState, frame)) {
-                if (isNextFrameAStrike(newState, frame)) {
+            } else if (isStrike(newState, frame)) {
+                if (isStrike(newState, frame + 1)) {
                     if (isFinalFrame(frame + 1)) {
                         if (!isSecondBallUnpopulatedOnFrame(newState, frame + 1)) {
                             const frameScore = 10 + 10 + ignoreUnknown(GameState.getScoreForBall2OnFrame(newState, frame + 1));
